@@ -1,0 +1,64 @@
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  /* Style for table headers */
+  th {
+    background-color: #f2f2f2;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Style for table cells */
+  td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+  
+  /* Style for alternating row colors */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for the image */
+  img {
+    display: block;
+    margin: auto;
+  }
+  
+  /* Style for the entire container */
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .create-btn{
+    background-color: rgb(228, 229, 230);
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    width: 15rem;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid black;
+  }
+  
+
+  .input-search {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+  }
+  
+  .input-search input {
+    padding: 10px;
+    width: 15rem;
+  }
+  
