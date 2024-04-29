@@ -3,12 +3,13 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Context, server } from "../main";
 import toast from "react-hot-toast";
+import '../styles/register.css'
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
+  const{isAuthenticated,setIsAuthenticated,loading,setLoading}=useContext(Context);
     useContext(Context);
 
   const submitHandler = async (e) => {
@@ -43,9 +44,10 @@ const Register = () => {
   if (isAuthenticated) return <Navigate to={"/"} />;
 
   return (
-    <div className="login">
-      <section>
-        <form onSubmit={submitHandler}>
+    <div className="register-container">
+      <section className="register-section">
+      <h1>Register</h1>
+        <form onSubmit={submitHandler} className="register-form">
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}

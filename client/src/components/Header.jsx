@@ -3,23 +3,23 @@ import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Context, server } from "../main";
+import '../styles/Header.css'
 
 const Header = () => {
-  const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
-    useContext(Context);
+  const{isAuthenticated,setIsAuthenticated,loading,setLoading,user}=useContext(Context);
 
   const logoutHandler = async () => {
     setLoading(true);
     try {
-      await axios.get(`${server}/users/logout`, {
+      await axios.post("http://localhost:8080/api/v1/users/logout", {
         withCredentials: true,
       });
 
-      alert("Logged Out Successfully");
+      toast("Logged Out Successfully");
       setIsAuthenticated(false);
       setLoading(false);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message,"cannot");
       setIsAuthenticated(true);
       setLoading(false);
     }
@@ -28,11 +28,15 @@ const Header = () => {
   return (
     <nav className="header">
       <div>
-        <h2>Employee Management.</h2>
+        <div>
+          EMS LOGO
+        </div>
       </div>
       <article>
         <Link to={"/"}>EmployeeList</Link>
-        <Link to={"/profile"}>Profile</Link>
+        <Link to={"/profile"}>
+           {isAuthenticated ?`${user.name}`:"Profile"}
+        </Link>
         {isAuthenticated ? (
           <button disabled={loading} onClick={logoutHandler} className="btn">
             Logout

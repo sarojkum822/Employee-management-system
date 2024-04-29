@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./styles/app.scss";
 import { createContext } from "react";
 
 export const server = "http://localhost:8080/api/v1";

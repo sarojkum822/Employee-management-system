@@ -42,25 +42,51 @@ export const getAllEmployee = async (req, res) => {
 };
 
 
+export const getEmployeeById = async (req, res) => {
+  try {
+    const employeeId = req.params.id;
+
+    const employee = await Employee.findOne(employeeId);
+
+    console.log(employee);
+
+
+
+    res.status(200).json(employee);
+  } catch (error) {
+    console.error("Error fetching employee:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 export const updateEmployee = async (req, res) => {
   try {
-    const { id, ...updateData } = req.body;
-    const updatedEmployee = await Employee.findByIdAndUpdate(id, updateData, { new: true });
-    res.status(200).json(updatedEmployee);
+    const updateData = req.body;
+
+    console.log(updateData._id)
+
+    await Employee.findByIdAndUpdate(updateData._id, updateData, { new: true });
+    res.status(200).json(updateEmployee);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
+
+
+
 
 
 export const deleteEmployee = async (req, res) => {
   try {
-    const { id } = req.body;
+    const id  = req.query.id;
 
-    await Employee.findByIdAndDelete(id);
-    
-    res.status(200).json({ message: "Employee deleted successfully" });
+    const data = await Employee.findByIdAndDelete({_id:id});
+
+    res.status(200).json({ message: "Employee deleted successfully", data: data });
+
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: error.message, error });
   }
 };
+

@@ -3,12 +3,14 @@ import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, Navigate } from "react-router-dom";
 import { Context, server } from "../main";
+import "../styles/login.css"; // Import your CSS file
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
-    useContext(Context);
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const[isAuthenticated,setIsAuthenticated] = useState(false);
+  const[loading,setLoading] =useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ const Login = () => {
         }
       );
 
-      toast.success(data.message);
+      alert(data.message);
       setIsAuthenticated(true);
       setLoading(false);
     } catch (error) {
@@ -42,9 +44,10 @@ const Login = () => {
   if (isAuthenticated) return <Navigate to={"/"} />;
 
   return (
-    <div className="login">
-      <section>
-        <form onSubmit={submitHandler}>
+    <div className="login-container">
+      <section className="login-section">
+        <form onSubmit={submitHandler} className="login-form">
+          <h2>Login</h2>
           <input
             type="email"
             placeholder="Email"
@@ -60,10 +63,12 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button disabled={loading} type="submit">
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
-          <h4>Or</h4>
-          <Link to="/register">Sign Up</Link>
+          <div className="signup-link">
+            <h4>Or</h4>
+            <Link to="/register">Sign Up</Link>
+          </div>
         </form>
       </section>
     </div>

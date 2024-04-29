@@ -55,4 +55,8 @@
   .create-employee-container button[type="submit"]:hover {
     background-color: #0056b3;
   }
-  
+
+.image-upload{
+  width: 20px;
+  height: 20px;
+}  

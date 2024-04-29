@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3f5684;
+    color: #fff;
+    padding: 20px 20px;
+  }
+  
+  .header h2 {
+    margin: 0;
+  }
+  
+  .header article {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header article a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: lighter;
+  }
+  
+  .header article a:hover {
+    text-decoration: underline;
+  }
+  
+  .header article .btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .header article .btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
